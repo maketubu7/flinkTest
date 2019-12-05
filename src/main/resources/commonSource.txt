@@ -1,0 +1,5 @@
+make man 20
+tubu woman 21
+maketubu man 22
+tubu other 21
+maketubu other 22
