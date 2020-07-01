@@ -8,6 +8,7 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-core/1.7.0/flink-core-1.7.0-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.ideaLibSources/flink-core-1.7.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

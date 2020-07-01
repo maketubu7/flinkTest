@@ -6,4 +6,5 @@ package com.bbd.FlinkTest.dao
   */
 object caseClass {
   case class ServerMsg(serverId: String, isOnline: Boolean, timestamp: Long)
+  case class Person(jid: String, sfzh: String, xm: String, dz: String)
 }

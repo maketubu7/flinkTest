@@ -86,7 +86,7 @@ object flinkCourseSourceCode4 {
 //    outputstream.getSideOutput(outputTag).print("side_out: ")
 
 //    serverstream.keyBy(_.serverId).process(new MonitorKeyedProcessFunction).print("get: ")
-    tuple_str_str_stream.keyBy(0).process(new CountWithTimeoutFunction).print("out: ")
+//    tuple_str_str_stream.keyBy(0).process(new CountWithTimeoutFunction).print("out: ")
 
     env.execute("source")
   }

@@ -40,7 +40,6 @@ object mysqlTool {
     val jdbc = PropertiesTool.getproperties("jdbc","mysql.properties")
     val user = PropertiesTool.getproperties("user","mysql.properties")
     val password = PropertiesTool.getproperties("passwd","mysql.properties")
-
     conn = DriverManager.getConnection(jdbc, user,password)
 
   }

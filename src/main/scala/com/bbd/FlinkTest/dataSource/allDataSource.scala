@@ -1,14 +1,19 @@
 package com.bbd.FlinkTest.dataSource
-
-import java.util.Random
+import java.text.SimpleDateFormat
+import java.util.Calendar
 
 import com.bbd.FlinkTest.dao.caseClass.ServerMsg
+import com.bbd.FlinkTest.dataSourceUtil.person
 import org.apache.flink.streaming.api.functions.source.{RichSourceFunction, SourceFunction}
+
+import scala.collection.mutable.ArrayBuffer
+import scala.util.Random
 
 /**
   * @Author: maketubu
   * @Date: 2019/12/9 20:05
   */
+
 object allDataSource {
 
   class tuple_str_int_source extends RichSourceFunction[(String, Int)] {
@@ -74,6 +79,47 @@ object allDataSource {
         ctx.collect(ServerMsg(serverId, isOnline,timestamp))
       }
 
+    }
+
+    override def cancel(): Unit = {
+      running = false
+    }
+  }
+
+  class person_source extends RichSourceFunction[String] {
+
+    private var running = true
+    private var count = 0
+
+    override def run(ctx: SourceFunction.SourceContext[String]): Unit = {
+      while (running) {
+//        Thread.sleep(1000)
+        val sfzh = person.get_sfzh()
+        count = count + 1
+        if (count > 100) cancel()
+        ctx.collect(sfzh)
+
+      }
+    }
+
+    override def cancel(): Unit = {
+      running = false
+    }
+  }
+
+  class words extends RichSourceFunction[String] {
+
+    private var running = true
+    private var count = 0
+
+    override def run(ctx: SourceFunction.SourceContext[String]): Unit = {
+      while (running) {
+        val tmp = (1 to 5)
+        Thread.sleep(1000)
+        val str: String = tmp(Random.nextInt(5)).toString
+//        println(str)
+        ctx.collect(str)
+      }
     }
 
     override def cancel(): Unit = {
