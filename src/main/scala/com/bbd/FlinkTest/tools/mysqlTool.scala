@@ -32,6 +32,15 @@ object mysqlTool {
     ps.execute()
   }
 
+  def insertIntoStudetn(value: (Int,String)): Unit ={
+    getConnection()
+    val updateSql = ("INSERT into student(id, name) " +
+      "VALUES (%d, '%s') ON DUPLICATE KEY UPDATE id = %d").format(value._1, value._2,value._1)
+    conn.setAutoCommit(true)
+    val ps = conn.prepareStatement(updateSql)
+    ps.execute()
+  }
+
   /**
     * 获取数据库连接
     */

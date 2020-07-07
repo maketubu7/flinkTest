@@ -1,8 +1,7 @@
-package com.bbd.FlinkTest.flinkSource
+package com.bbd.FlinkTest.imooc
+
 import org.apache.flink.api.common.operators.Order
-import org.apache.flink.api.scala.ExecutionEnvironment
-import org.apache.flink.api.scala._
-import org.apache.flink.configuration.Configuration
+import org.apache.flink.api.scala.{ExecutionEnvironment, _}
 
 import scala.collection.mutable.ListBuffer
 

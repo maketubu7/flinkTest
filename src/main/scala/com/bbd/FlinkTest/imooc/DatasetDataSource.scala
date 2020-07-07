@@ -1,6 +1,6 @@
-package com.bbd.FlinkTest.flinkSource
-import org.apache.flink.api.scala.ExecutionEnvironment
-import org.apache.flink.api.scala._
+package com.bbd.FlinkTest.imooc
+
+import org.apache.flink.api.scala.{ExecutionEnvironment, _}
 import org.apache.flink.configuration.Configuration
 
 object DatasetDataSource {

@@ -1,4 +1,5 @@
-package com.bbd.FlinkTest.flinkSource
+package com.bbd.FlinkTest.imooc
+
 import org.apache.flink.api.common.accumulators.LongCounter
 import org.apache.flink.api.common.functions.RichMapFunction
 import org.apache.flink.api.scala._
