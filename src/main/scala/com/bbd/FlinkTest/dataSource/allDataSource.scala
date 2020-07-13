@@ -125,6 +125,7 @@ object allDataSource {
         println("source: "+ rand_str)
         ctx.collect(rand_str)
         count += 1
+        if (count > 100) running = false
       }
     }
 
@@ -235,9 +236,9 @@ object allDataSource {
     override def run(ctx: SourceFunction.SourceContext[(Int,Long)]): Unit = {
       while (running) {
         Thread.sleep(1000)
-        val event_time = System.currentTimeMillis() -random.nextInt(100)
+        val event_time = System.currentTimeMillis() -random.nextInt(1)
         var key = 1
-        if (id % 2 == 0) key = 2
+//        if (id % 2 == 0) key = 2
 //        println("source "+ key.toString + " " + event_time.toString)
         ctx.collect((key,event_time))
         id += 1
@@ -256,7 +257,7 @@ object allDataSource {
     private var id = 0
     val cases = new util.ArrayList[(Int,Long)]()
     cases.add((1,1461756862000L))
-    cases.add((1,1461756875000L))
+    cases.add((1,1461756848000L))
     cases.add((1,1461756878000L))
     cases.add((1,1461756873000L))
     cases.add((1,1461756865000L))

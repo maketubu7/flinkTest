@@ -36,9 +36,20 @@ object mysqlTool {
     getConnection()
     val updateSql = ("INSERT into student(id, name) " +
       "VALUES (%d, '%s') ON DUPLICATE KEY UPDATE id = %d").format(value._1, value._2,value._1)
-    conn.setAutoCommit(true)
     val ps = conn.prepareStatement(updateSql)
     ps.execute()
+  }
+
+  def getWindowTime: Long ={
+    getConnection()
+    val sql = "select windowtime from myTrigger"
+    val ps = conn.prepareStatement(sql)
+    val res = ps.executeQuery()
+    var windowtime = 1L
+    while (res.next()) {
+      windowtime = res.getLong("windowtime")
+    }
+    windowtime
   }
 
   /**
@@ -50,7 +61,7 @@ object mysqlTool {
     val user = PropertiesTool.getproperties("user","mysql.properties")
     val password = PropertiesTool.getproperties("passwd","mysql.properties")
     conn = DriverManager.getConnection(jdbc, user,password)
-
+    conn.setAutoCommit(true)
   }
 
   /**
