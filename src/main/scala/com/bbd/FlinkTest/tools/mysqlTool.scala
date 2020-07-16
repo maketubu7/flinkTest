@@ -7,6 +7,10 @@ package com.bbd.FlinkTest.tools
 
 import java.sql.{Connection, DriverManager, PreparedStatement}
 
+import com.alibaba.fastjson.JSON
+
+import scala.collection.mutable.ArrayBuffer
+
 /**
   * MySQL操作工具类
   */
@@ -52,6 +56,22 @@ object mysqlTool {
     windowtime
   }
 
+  def insertBatchKakfa(kafkaBuffer: ArrayBuffer[String]): Unit ={
+    val presql = conn.prepareStatement("insert into flink_kafka_consumer(name,addr,age) values (?,?,?)")
+      for (data <- kafkaBuffer) {
+        val tmp = JSON.parseObject(data)
+        val name = tmp.getString("name")
+        val addr = tmp.getString("addr")
+        val age = tmp.getString("age")
+        presql.setString(1,name)
+        presql.setString(2,addr)
+        presql.setString(3,age)
+        presql.addBatch()
+      }
+      presql.executeBatch()
+      presql.clearBatch()
+  }
+
   /**
     * 获取数据库连接
     */
@@ -81,8 +101,6 @@ object mysqlTool {
 
 
   def main(args: Array[String]) {
-//    updateItemSum(67)
-    updateItemGroupSum(("类别C",89))
+    println(1)
   }
-
 }

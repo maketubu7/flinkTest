@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="flinktest" uuid="ce54a29b-f213-4234-8182-1a6ce995af57">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <remarks>flink</remarks>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://address=(protocol=tcp)(host=localhost)(port=3306)/flinktest</jdbc-url>
+    </data-source>
+  </component>
+</project>

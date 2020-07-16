@@ -14,7 +14,7 @@ import org.apache.kafka.common.serialization.StringSerializer
   */
 object KafkaProducer {
   def main(args: Array[String]): Unit = {
-    producerFunction("make_topic",100)
+    producerFunction("make_topic",10000)
   }
   def producerFunction(topic: String,num : Int): Unit ={
     val brokers_list = "192.168.89.135:9092"
@@ -27,6 +27,7 @@ object KafkaProducer {
       val json = new JSONObject()
       json.put("name","jason"+i)
       json.put("addr","25"+i)
+      Thread.sleep(1000)
       producer.send(new ProducerRecord(topic,json.toString()))
       println(json.toString())
     }
