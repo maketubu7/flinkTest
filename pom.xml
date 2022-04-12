@@ -8,7 +8,7 @@
     <scala.version>2.11.8</scala.version>
     <scala.binary.version>2.11</scala.binary.version>
     <flink.version>1.7.0</flink.version>
-    <haddop.version>2.6.0</haddop.version>
+    <haddop.version>3.2.3</haddop.version>
     <kafka.version>1.1.1</kafka.version>
   </properties>
 
